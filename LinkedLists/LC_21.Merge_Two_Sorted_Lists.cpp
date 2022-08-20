@@ -1,73 +1,41 @@
-//problem link:
+//problem link:https://leetcode.com/problems/merge-two-sorted-lists/
 //solve status:
 //learnings:
 
-//TC: O()
-//MC: O()
+//TC: O(n)
+//MC: O(n)
 
 
 #include<bits/stdc++.h>
 using namespace std;
 
-#define DummyValue INT_MIN
-
-class LinkedListNode
-{
-public:
-	int value;
-	LinkedListNode* next;
-	LinkedListNode(int val, LinkedListNode* nxt)
-	{
-		value = val;
-		next = nxt;
-	}
-
-	LinkedListNode* insertAtLast(LinkedListNode* head, int val) {
-		LinkedListNode* curr = head;
-		while (curr->next) {
-
-			curr = curr->next;
-
-		}
-		curr->next = new LinkedListNode(val, NULL);
-		return head;
-	}
-
-	void printList(LinkedListNode* head) {
-		LinkedListNode* curr = head->next;
-		while (curr) {
-			cout << curr->value << " ";
-			curr = curr->next;
-
-		}
-		cout << endl;
-	}
-
-};
 
 
-void List_sort(LinkedListNode* list1, LinkedListNode* list2 ) {
-	LinkedListNode* curr = list1->next;
-	while (curr) {
-		cout << curr->value << " ";
-		curr = curr->next;
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode prehead = new ListNode(-1);
+        ListNode prev = prehead;
 
-	}
-	cout << endl;
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
+                prev.next = l1;
+                l1 = l1.next;
+            } else {
+                prev.next = l2;
+                l2 = l2.next;
+            }
+            prev = prev.next;
+        }
+
+
+        prev.next = l1 == null ? l2 : l1;
+        return prehead.next;//sending the address of the head node not the value
+    }
 }
 
 
 
 
-
-
-
-// class Solution {
-// public:
-//     returnType func_name( return) {
-
-//     }
-// };
 
 int main()
 {
@@ -78,26 +46,10 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 
-	// Solution a;
-	// cout<<a.func()<<endl;
-	LinkedListNode* head = new LinkedListNode(rand() % 10, NULL);
 
-	LinkedListNode* x = new LinkedListNode(rand() % 10, NULL);;
-
-	for (int i = 0; i < 5; ++i)
-	{
-		head = head->insertAtLast(head, rand() % 10);
-		x = x->insertAtLast(x, rand() % 10);
-	}
-
-	// head->printList(head);
-	// x->printList(x);
-
-	List_sort(head, x);
 
 
 }
-
 
 
 
