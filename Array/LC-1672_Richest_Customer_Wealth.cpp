@@ -1,9 +1,9 @@
-//problem link:
+//problem link:https://leetcode.com/problems/richest-customer-wealth/
 //solve status:
-//learnings:
+//learnings:  time complexity of accumulate function in C++ is o(n)
 
-//TC: O()
-//MC: O()
+//TC: O(n^2)
+//MC: O(n^2)
 
 #include<bits/stdc++.h>
 using namespace std;
